@@ -1,3 +1,4 @@
+================================================================
 ----- Downloading with progress bar and renaming the final file
 wget -O ~/Desktop/final.zip https://github.com/joaov777/mainconf/archive/master.zip -q --show-progress --progress=bar:force 2>&1
 ================================================================
