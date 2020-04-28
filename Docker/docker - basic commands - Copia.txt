@@ -1,0 +1,84 @@
+#Download an NGINX image
+docker pull nginx
+
+#Pull the image, run it and bind the port
+docker container run -it -p 80:80 nginx (interactive)
+docker container run -d -p 8080:80 --name mynginx nginx
+docker container run -d -p 8081:80 --name myapache httpd
+docker container run -d -p 3306:3306 --name mymysql --env MYSQL_ROOT_PASSWORD=123123 mysql
+
+#Display all available containers (whether working or not)
+docker container ls -a 
+
+#Remove a container
+docker container rm <ID> 
+docker container rm <NAME> -f (Removes the container even if it is running)
+
+#Remove all containers
+docker rm $(docker ps -aq) -f
+
+#Showing all the images pulled
+docker images 
+
+#Delete a docker image
+docker image rm <ID>
+
+#Show running containers
+docker ps
+
+#Stop the container ("docker ps" won't show it but "docker ps -a" will)
+docker container stop <NAME>
+
+#Entering into the container
+docker container exec -it <NAME> bash
+
+#Log into Docker (Important for DockerHUB)
+docker login
+
+#Push an image to dockerhub
+docker push <NAME_OF_THE_IMAGE_CREATED>
+
+#Add user into Docker group
+sudo gpasswd -a $user docker
+
+#Starting, stopping and restarting the service
+sudo systemctl start/stop/restart docker
+sudo service docker start/stop/restart
+
+#Saving a container into an image (current state)
+docker commit <CONTAINER_ID> <NEW_NAME>:<VERSION>
+
+#Verificar se o daemon está em funcionamento
+ps aux | grep docker
+
+Docker File
+- Important for creating custom images based on the instructions added to a file.
+- It is a text document that contains commands pertaining to the creation of a custom image.
+- "docker build" is the main command to create images based on a docker file.
+- "$ docker build -f /path/to/a/Dockerfile ." --> How it is usually mapped.
+- "$ docker build -t shykes/myapp ." --> Specifying a repo where to save the new built image.
+- It is structured like this:
+# Comment
+INSTRUCTION arguments
+- A dockerfile always start with FROM and it specifies the base image from which you're building.
+- "EXPOSE" --> Informs Docker that the container listens on the specified network ports at runtime.
+- "EXPOSE" doesn't actually publish the port, it works as documentation. In order to fully exnable the port on which to listen and accept connections, it's necessary to use the flag "-p" on "docker run".
+Ex.: docker run -p 80:80/tcp -p 80:80/udp
+- To set up por redirection on the hist system, use the -P flag.
+The docker network command supports creating networks for communication among containers without the need to expose or publish specific ports --> Because the containers connected to the network can communicate with each other over any port.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
