@@ -43,3 +43,16 @@ bootype=""
 	
 	[[ $bootype = "UEFI" ]] && echo "Nossa, UEFI!!" || echo "Nossa, BIOS!!"
 ================================================================
+----- Checking whether system is booted through UEFI or BIOS [2]
+
+checkbootype(){
+
+	if [[ -d /sys/firmware/efi/efivars ]] 2>/dev/null
+	then
+		echo "UEFI"
+	else
+		echo "BIOS"
+	fi	
+}
+	echo "A função de checagem do boot encontrou $(checkbootype)"
+================================================================
