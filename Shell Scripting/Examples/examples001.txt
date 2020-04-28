@@ -1,0 +1,25 @@
+
+----- Downloading with progress bar and renaming the final file
+wget -O ~/Desktop/final.zip https://github.com/joaov777/mainconf/archive/master.zip -q --show-progress --progress=bar:force 2>&1
+
+----- Create and delete folder based on condition and timing
+#folder=~/Desktop/teste
+	
+	read -t 15 -r -p ""Type the folder absolute path: " folder && {
+
+		[[ ! -d $folder ]] && {
+			echo -e "Folder non existent! \nCreating folder!" && sleep 1
+			mkdir $folder
+		} || {
+			echo -e "Folder already created! \n Deleting it!" && sleep 1
+			sudo rm -rf $folder
+		}
+	} || {
+	echo "Time is up!!"
+	}
+
+----- Check distro installed
+test $(lsb_release -a | grep Manjaro | wc -l) != 0 && echo 'É a distro escolhida!!' || echo 'Não é a distro escolhida!!'
+
+----- Check directory existence and/or create it
+[ ! -d "$1" ] && mkdir $1 || echo "Folder alread created!"
