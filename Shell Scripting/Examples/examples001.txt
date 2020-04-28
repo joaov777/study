@@ -23,3 +23,9 @@ test $(lsb_release -a | grep Manjaro | wc -l) != 0 && echo 'É a distro escolhid
 
 ----- Check directory existence and/or create it
 [ ! -d "$1" ] && mkdir $1 || echo "Folder alread created!"
+
+----- Insert text after matching pattern
+sed -i "/^PATTERNTOBEFOUND/a REPLACEMENT" ~/Desktop/example.txt
+
+----- Removing text after matching pattern
+sed -i "s/^PATTERNTOBEFOUND//g" ~/Desktop/example.txt
