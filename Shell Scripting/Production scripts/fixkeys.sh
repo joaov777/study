@@ -6,6 +6,9 @@
 #Main purpose: Fix ovpn keys replacing nogroup with nobody keyword within the .ovpn key file
 #Version: 1.0
 
+	#pattern for execution: <run_script> <keys_folder>
+	#example: ~/Desktop/fixkeys.sh ~/Desktop/backup-chaves-ovpn/
+
 	path=$1
 
 	for i in {1..$(ls $path | wc -l)}
