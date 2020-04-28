@@ -1,7 +1,6 @@
-
 ----- Downloading with progress bar and renaming the final file
 wget -O ~/Desktop/final.zip https://github.com/joaov777/mainconf/archive/master.zip -q --show-progress --progress=bar:force 2>&1
-
+================================================================
 ----- Create and delete folder based on condition and timing
 #folder=~/Desktop/teste
 	
@@ -17,15 +16,29 @@ wget -O ~/Desktop/final.zip https://github.com/joaov777/mainconf/archive/master.
 	} || {
 	echo "Time is up!!"
 	}
-
+================================================================
 ----- Check distro installed
 test $(lsb_release -a | grep Manjaro | wc -l) != 0 && echo 'É a distro escolhida!!' || echo 'Não é a distro escolhida!!'
-
+================================================================
 ----- Check directory existence and/or create it
 [ ! -d "$1" ] && mkdir $1 || echo "Folder alread created!"
-
+================================================================
 ----- Insert text after matching pattern
 sed -i "/^PATTERNTOBEFOUND/a REPLACEMENT" ~/Desktop/example.txt
-
+================================================================
 ----- Removing text after matching pattern
 sed -i "s/^PATTERNTOBEFOUND//g" ~/Desktop/example.txt
+================================================================
+----- Checking whether system is booted through UEFI or BIOS
+bootype=""
+
+	[[ $(ls /sys/firmware/efi/efivars 2>1) ]] && {
+		echo "UEFI boot detected!!"
+		bootype="UEFI"
+	} || {
+		echo "BIOS boot detected!!"
+		bootype="BIOS"
+	}
+	
+	[[ $bootype = "UEFI" ]] && echo "Nossa, UEFI!!" || echo "Nossa, BIOS!!"
+================================================================
