@@ -1,13 +1,10 @@
-
 #!/bin/bash
 
 #Autor: Joao Victor R. Galvino
 #Data de criacao: 06.04.20
-#Ultima atualizacao: 15.04.20
+#Ultima atualizacao: 12.05.20 - Criacao de rotina de log para a criacao de chaves
 #Objetivo: Gerenciar chaves OVPN mais facilmente. Tanto na criação/sobrescrita, quanto na verificação de existência.
 #Versao: 1.0
-
-#!/bin/bash
 
 #verifica a chave OVPN
 verificarChave() {
@@ -44,6 +41,9 @@ criaChave() {
 		else
 			echo "> ERRO NA CRIAÇÃO DA CHAVE!!"
 		fi
+
+		#envio para log
+		echo "[$(date)] - IP de origem: $(echo $SSH_CLIENT | awk '{ print $1}') - Chave criada: $1" >> ~/ovpn_log.txt
 }
 
 while [ true ];
