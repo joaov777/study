@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #Autor: Joao Victor R. Galvino
+#Contato: joao.galvino@ifce.edu.br
+#Setor de Atuacao: Coordenadoria de Infraestrutura de Redes - COIR
 #Data de criacao: 06.04.20
-#Ultima atualizacao: 12.05.20 - Criacao de rotina de log para a criacao de chaves
+#Ultima atualizacao: 26.08.20 - Insercao da opcao para verificacao da quantidade de clientes conectados na VPN
 #Objetivo: Gerenciar chaves OVPN mais facilmente. Tanto na criação/sobrescrita, quanto na verificação de existência.
 #Versao: 1.0
 
@@ -10,7 +12,7 @@
 verificarChave() {
 
 	#if [ -f ~/client-configs/files/"$1".ifce.ovpn ]; then
-	if [ grep "$1" ~/clien-configs/files/* 2>1 ];
+	if [ grep "$1" ~/client-configs/files/* 2>1 ];
 	then
 		echo ">> Nenhuma credencial associada!!" && sleep 2
 	else
@@ -46,6 +48,16 @@ criaChave() {
 		echo "[$(date)] - IP de origem: $(echo $SSH_CLIENT | awk '{ print $1}') - Chave criada: $1" >> ~/ovpn_log.txt
 }
 
+#verifica a quantidade de clientes conectados
+clientesConectados() {
+		
+		clear
+		echo "> CLIENTES CONECTADOS <"
+		echo "$(sudo cat /var/log/openvpn/openvpn-status.log | grep 10.8.0 | wc -l)"
+		read -p ""
+
+}
+
 while [ true ];
     do
 
@@ -55,6 +67,7 @@ while [ true ];
     echo "#(0) - Exit"
     echo "#(1) - Verificar existência de chave OVPN"
     echo "#(2) - Criar/Sobrescrever chave OVPN"
+    echo "#(3) - Verificar quantidade de clientes conectados"
     echo "|-------------------------------------------|"
     read -p "Option: " menuChoice
 
@@ -63,6 +76,7 @@ while [ true ];
             0) exit ;;
 	    1) read -p "Insira o nome da chave OVPN conforme e-mail institucional (sem @ifce.edu.br): " chaveOVPN && verificarChave $chaveOVPN ;;
 	    2) read -p "Insira o nome da chave OVPN conforme e-mail institucional (sem @ifce.edu.br): " chaveOVPN && criaChave $chaveOVPN;;
+	    3) clientesConectados ;;
             *) echo "Opção inválida!!" ;;
     esac
 
