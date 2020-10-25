@@ -5,7 +5,7 @@ wget -O ~/Desktop/final.zip https://github.com/joaov777/mainconf/archive/master.
 ----- Create and delete folder based on condition and timing
 #folder=~/Desktop/teste
 	
-	read -t 15 -r -p ""Type the folder absolute path: " folder && {
+	read -t 15 -r -p "Type the folder absolute path: " folder && {
 
 		[[ ! -d $folder ]] && {
 			echo -e "Folder non existent! \nCreating folder!" && sleep 1
@@ -56,3 +56,15 @@ checkbootype(){
 }
 	echo "A função de checagem do boot encontrou $(checkbootype)"
 ================================================================
+
+de=$XDG_CURRENT_DESKTOP
+
+    if [ $XDG_CURRENT_DESKTOP == "XFCE" ] 
+    then
+        echo "XFCE"
+    elif  [ $XDG_CURRENT_DESKTOP == "i3" ]
+    then
+        echo "i3"
+    else
+        echo "Nao sei!"
+    fi
