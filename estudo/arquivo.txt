@@ -1,1 +1,2 @@
 Texto base para o estudo. Porém, estou adicionando mais uma frase.
+Essa frase foi adicionada na branch da feature 12.
