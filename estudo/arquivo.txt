@@ -1,2 +1,2 @@
 Texto base para o estudo. Porém, estou adicionando mais uma frase.
-Mas eu não quero esse arquivo sendo alterado!
+Mas eu não quero esse arquivo sendo alterado! Ok?
