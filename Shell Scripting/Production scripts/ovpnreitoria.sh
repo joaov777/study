@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# OVPN PICI
+# OVPNREITORIA
 
 #Autor: Joao Victor R. Galvino
 #Contato: joao.galvino@ifce.edu.br
 #Setor de Atuacao: Coordenadoria de Infraestrutura de Redes - COIR
 #Data de criacao: 06.04.20
-#Ultima atualizacao: 10.11.20 - Atualização de Labels e alias no bashrc
+#Ultima atualizacao: 10.11.20 - Inserção da troca dos IP's da VPN do Pici pela VPN da Reitoria na chave gerada.
 #Objetivo: Gerenciar chaves OVPN mais facilmente. Tanto na criação/sobrescrita, quanto na verificação de existência.
 #Versao: 1.0
 
@@ -36,7 +36,9 @@ criaChave() {
 
 		if [ -f ~/client-configs/files/"$1".ifce.ovpn ]; then
 
+			#Alteração no arquivo final gerado para adequação da conectividade
 			sed -i 's/group nogroup/group nobody/g' ~/client-configs/files/"$1".ifce.ovpn
+			sed -i 's/200.17.33.43/200.129.17.20/g' ~/client-configs/files/"$1".ifce.ovpn
 			echo ""
 			echo "> RELATORIO FINAL <"
 			echo "> Chave criada: $1.ifce.ovpn"
@@ -65,7 +67,7 @@ while [ true ];
 
     clear
     echo "$(tput bold)$(tput setaf 7)"
-    echo "|==============|> IFCE OVPN - PICI <|==============|"
+    echo "|==============|> IFCE OVPN - REITORIA <|==============|"
     echo "#(0) - Exit"
     echo "#(1) - Verificar existência de chave OVPN"
     echo "#(2) - Criar/Sobrescrever chave OVPN"
