@@ -108,6 +108,15 @@ echo ${arr[*]}
 echo -e "Only position 1 through 3:\n${arr[@]:1:3}"
 echo -e "Final number of elements:\n${#arr[*]}"
 
+---- While loop to print ordered elements as in a menu enclosed by brackets
+i=0
+while [ $i -lt ${#arr[*]} ]
+do
+    echo "[${arr[$i]}]"
+    ((i=$i+1))
+    #i=`expr $i + 1` 
+done
+
  ===============================================================
 
 
