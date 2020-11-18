@@ -129,6 +129,25 @@ echo ${categories[0]}
 echo ${categories[*]}
 echo ${categories[@]}
 
+ ===============================================================
+######## Downloading audio from multiple youtube video links from a file
+
+#!/bin/bash
+# A shell script to read file line by line
+ 
+input="/home/suporte/Desktop/lista.txt"
+ 
+while IFS= read -r line
+do
+    # $line variable contains current line read from the file
+    # display $line text on the screen or do something with it.
+ 
+    youtube-dl --extract-audio --audio-format mp3 "$line" -o '/run/media/suporte/759A-6649/HardTrap/%(title)s.%(ext)s'
+
+done < "$input"
+
+ ===============================================================
+######## 
 
 
 
