@@ -147,7 +147,20 @@ do
 done < "$input"
 
  ===============================================================
+######## Comparing two files (similarities are sent to a third file) - relatorio.txt and relatorio2.txt were compared and the matches appended to results.txt
+#!/bin/bash
+
+        while read content; do
+                grep -q "$content" relatorio2.txt
+                if [ $? -eq "0" ]; then
+                        echo "$content" found in relatorio2 >> results.txt
+                fi
+        done < relatorio.txt
+	
+ ===============================================================
 ######## 
+	
+
 
 
 
