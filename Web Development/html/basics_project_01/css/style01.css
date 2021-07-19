@@ -1,0 +1,29 @@
+p {
+  color: rgb(143, 143, 143);
+  text-align: center;
+}
+
+/*Adding some comments on CSS are easy*/
+h1 {
+  color: #5a5a5a;
+}
+
+a {
+  color: #ff0000;
+}
+
+div {
+  background-color: #ededed;
+  border-color: rgb(133, 133, 133);
+  border-width: 1px;
+  border-style: solid;
+}
+
+#myfirst_id {
+  color: rgb(38, 0, 255);
+  background: #efff0b;
+}
+
+.myfirstclass {
+  background: #90909013;
+}

@@ -1,0 +1,148 @@
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+input.input_login {
+  margin: 4px;
+  border-radius: 5px;
+  border: 1px solid rgb(126, 126, 126);
+  height: 25px;
+  width: 200px;
+  padding: 4px 4px 4px 5px;
+  font-size: 14px;
+}
+
+input.input_login:hover {
+  border: 1px solid rgb(71, 71, 71);
+}
+
+#login_box {
+  border: 1px solid #ededed;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  padding: 0px;
+  height: 185px;
+  width: 380px;
+  border-radius: 10px;
+}
+
+#login_box:hover {
+  border: 1px solid rgb(230, 230, 230);
+}
+
+h1.title_login {
+  text-align: center;
+  margin-top: 5px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 25px;
+}
+
+input#button_login {
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 2px;
+  position: relative;
+  left: 50%;
+  margin-top: 12px;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 25px;
+  cursor: pointer;
+}
+
+#button_login:hover {
+  background-color: #e4e4e4;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(180, 180, 180);
+}
+
+.login_form {
+  position: absolute;
+  margin: 5px;
+  width: 300px;
+  height: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login_form label {
+  display: inline-block;
+  width: 70px;
+}
+
+.cant_login {
+  position: absolute;
+  width: 382px;
+  height: 27px;
+  font-weight: 400;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  padding-top: 5px;
+  text-decoration: none;
+}
+
+.cant_login a {
+  text-decoration: none;
+  color: rgb(126, 126, 126);
+  font-size: 10px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.cant_login a:hover {
+  color: #00bd84;
+}
+
+#footer {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  /*background-color: rgb(247, 247, 247);*/
+  bottom: 0;
+  background-image: linear-gradient(#ffffff, #d8d8d8);
+}
+
+#footer a {
+  color: rgb(126, 126, 126);
+  position: absolute;
+  left: 50%;
+  bottom: 15%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: rgb(41, 41, 41);
+}
+
+.change_theme_box {
+  width: 115px;
+  height: 30px;
+  position: absolute;
+  right: 0%;
+  margin: 10px;
+}
+
+.change_theme_box label {
+  color: rgb(126, 126, 126);
+  position: absolute;
+  right: 5%;
+  bottom: 15%;
+  font-size: 11px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  text-decoration: none;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.change_theme_box span:hover {
+  color: rgb(41, 41, 41);
+}
