@@ -21,7 +21,7 @@ def checkOption(userOption):
 
 # clearing the screen
 def clearScreen():
-    os.system('clear') if os.name == 'posix' else 'cls'
+    os.system('clear') if os.name == 'posix' else os.system('cls')
     #_ = call('clear' if os.name == 'posix' else 'cls')
 
 
@@ -42,6 +42,6 @@ while True:
     input("Press any key to continue...")
     clearScreen()
     
-    sleep(2)
+    #sleep(2)
     #time.sleep(10)
     
