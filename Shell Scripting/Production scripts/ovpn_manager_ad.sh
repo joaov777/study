@@ -5,7 +5,7 @@ pressioneTecla="Pressione qualquer tecla para continuar..."
 diretorioDeChaves="/home/operador/configs_vpn"
 
 #informações básicas LDAP
-URI="ldap://ad.ifce.edu.br:389" #ex.: ldap://ad.mycompany.com:389
+URI="" #ex.: ldap://ad.mycompany.com:389
 BASE=""; #ex.: ou=mycompany,dc=ad,dc=com,dc=br
 ACCOUNT=""
 PASSWORD=""
