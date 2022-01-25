@@ -20,7 +20,7 @@ def add_fruit(fruit_name):
     #if more than one fruit is added, they are separated by a single space
     all_fruits = fruit_name.split(" ")
 
-    check whether the fruit is already added or not
+    #check whether the fruit is already added or not
     for af in range(0,len(all_fruits)):
         for f in range(0,len(fruits)):
             if all_fruits[af] != fruits[f]:
