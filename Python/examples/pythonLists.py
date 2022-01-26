@@ -18,30 +18,18 @@ def add_fruit(fruit_name):
     """
 
     #if more than one fruit is added, they are separated by a single space
-    all_fruits = fruit_name.split(" ")
+    all_fruits = fruit_name.split()
 
     #check whether the fruit is already added or not
-    for af in range(0,len(all_fruits)):
-        for f in range(0,len(fruits)):
-            if all_fruits[af] != fruits[f]:
-                if len(all_fruits) > 1:
-                    
-                    fruits.extend(all_fruits[af])
-                else:
-                    print("ola"); input()
-                    fruits.append(fruit_name[f])
-            else:
+    #if the list is not empty
+    if fruits:
+        for af in range(len(all_fruits)):
+            if all_fruits[af] in fruits:
                 print(">> ERROR: " + all_fruits[af] + " already added!") ; input()
-    
-    #if fruit_name in fruits:
-    #    print(">> ERROR: This fruit has already been added!") ; input()
-    #    return
-
-    #if more than one fruit is added at the same time
-   # if len(all_fruits) > 1:
-   #     fruits.extend(all_fruits)
-   # else:
-   #    fruits.append(fruit_name)
+            else:
+                fruits.append(all_fruits[af])
+    else:
+        fruits.extend(all_fruits)
 
 def delete_fruit(fruit_name):
     fruits.remove(fruit_name)
@@ -50,13 +38,13 @@ def list_all_fruits(fruits):
     print("The fruits added are: ", *fruits, sep = " ")
 
 def menu_option(menu_option,number_option):
-    print(f"{number_option}) {menu_option}")
+    print(f"({number_option}) {menu_option}")
 
 fruits = []
 
 while True:
     clear_screen()
-    print("## The fruit party ##")
+    print("## The Fruit Manager ##")
     menu_option("Add fruit",1)
     menu_option("Delete fruit",2)
     menu_option("See all fruits",3)
