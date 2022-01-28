@@ -7,6 +7,7 @@
 # Python version: 3.10.0
 #==========================================
 
+import os
 from os import system, name
 import sys
 import time
@@ -47,10 +48,10 @@ def create_game(players):
         print("1" , str(board[1]).strip('[]')) 
         print("2" , str(board[2]).strip('[]'))
 
-        if(check_winner(board,curr,players)):
-            new_game(input(f"#> {players[curr]} kicked {players[switch_player(curr)]}'s ass! (yes/no): ").lower())
-        elif check_draw_game():
-            new_game(input("#> Draw Games suck! Play again? (yes/no): ").lower())
+        if(check_winner(board,curr,players)) or (check_draw_game()):
+            #new_game(input(f"#> {players[curr]} kicked {players[switch_player(curr)]}'s butt! (yes/no): ").lower())
+            new_game()
+            #new_game(input("#> Draw Games suck! Play again? (yes/no): ").lower())
         
         curr = switch_player(curr)
 
@@ -62,14 +63,18 @@ def create_game(players):
             print("-- Invalid Option!") ; input()
             curr = switch_player(curr)
 
-def new_game(user_choice):
-    if (user_choice == "yes") or (user_choice == "y"):
-        main()
-    elif (user_choice == "no") or (user_choice == "n"):
-        sys.exit()
+def new_game():
 
+    user_choice = input("#> Do you want to play again? (yes/no)")
+
+    match user_choice:
+        case ("yes" | "y"):
+            main() 
+
+        case ("no" | "n"):
+            sys.exit()
+  
 def check_draw_game():
-    
     if len(played_moves) == 9:
         print("-- DRAW GAME!!") ; input()
         return True
@@ -123,6 +128,15 @@ def switch_player(current_player):
     elif current_player == 1:
         return 0 
 
+def reset_board(board):
+    for i in range(0,len(board)):
+        board[i] = ['#','#','#']
+
+    played_moves.clear()
+    players.clear()
+        
+    
+
 #creating the board
 
 row0 = ['#','#','#']
@@ -133,6 +147,8 @@ players = []
 played_moves = []
 
 def main():
+
+    reset_board(board)
 
     while True:
 
@@ -163,4 +179,5 @@ def main():
             case ("2"):
                 sys.exit()
 
-main()
+if __name__ == "__main__":
+    main()
