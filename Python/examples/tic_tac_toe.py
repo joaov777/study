@@ -1,4 +1,12 @@
 
+#==========================================
+# Title:  TIC TAC TOE
+# Author: github.com/joaov777
+# Date:   27 Jan 2022
+# Last update: 28 Jan 2022
+# Python version: 3.10.0
+#==========================================
+
 from os import system, name
 import sys
 import time
