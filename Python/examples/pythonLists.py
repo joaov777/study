@@ -48,7 +48,6 @@ while True:
     menu_option("Add fruit",1)
     menu_option("Delete fruit",2)
     menu_option("See all fruits",3)
-    #menu_option("Quit",4)
     option_chosen = input("Option: ")
 
     match option_chosen:
@@ -57,7 +56,7 @@ while True:
 
         case ("1"):
             add_fruit(input("ADD FRUIT(s): "))
-
+            
         case ("2"):
             delete_fruit(input("DELETE FRUIT(s): "))
 

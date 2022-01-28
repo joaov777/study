@@ -22,9 +22,6 @@ def game_title():
     print(f"### - TIC TAC TOE - ###")
 
 def create_game(players):
-
-    
-    #print(f"## - GAME {random.randint(0,200)} CREATED") 
    
     #current player
     curr = 1
@@ -44,33 +41,33 @@ def create_game(players):
 
         player_move = str(input(f"{players[curr]}: "))
 
-        #if(check_move((player_move))):
-        register_move(player_move,curr)
-        #else:
-            #print("Not valid!")
+        if(check_move(player_move)):
+            register_move(player_move,curr)
+        else:
+            print("Invalid Option!") ; input()
+            curr = switch_player(curr)
     
+def check_move(player_move):
+    allowed_moves = [ "00", "01" ,"02" , "10" , "11" , "12" , "20" , "21" , "22" ]
+    
+    if (player_move in allowed_moves) and (player_move not in played_moves):
+        played_moves.append(player_move)
+        return True
+    else:
+        return False
 
+def register_move(player_move,curr):
+    
+    if curr == 0:
+        board[int(player_move[0])][int(player_move[1])] = "X"
+    elif curr == 1:
+        board[int(player_move[0])][int(player_move[1])] = "Y"
 
 def switch_player(current_player):
     if current_player == 0:
         return 1
     elif current_player == 1:
         return 0 
-                
-def register_move(player_move,curr):
-    
-    if curr == "0":
-        board[player_move[0]][player_move[1]] = "X"
-    elif curr == "1":
-        board[player_move[0]][player_move[1]] = "Y"
-
-
-def check_move(player_move):
-    if str(player_move).isnumeric() and len(str(player_move)) == 2:
-        return True 
-    else:
-        return False
-            
 
 #creating the board
 
@@ -79,6 +76,7 @@ row1 = ['#','#','#']
 row2 = ['#','#','#']
 board = [row0,row1,row2]
 players = []
+played_moves = []
 
 while True:
 
