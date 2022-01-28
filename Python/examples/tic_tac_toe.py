@@ -48,11 +48,10 @@ def create_game(players):
         print("2" , str(board[2]).strip('[]'))
 
         if(check_winner(board,curr,players)):
-            user_choice = input("#> Do you want to play again? (yes/no): ").lower()
-            if (user_choice == "yes") or (user_choice == "y"):
-                main()
-            elif (user_choice == "no") or (user_choice == "n"):
-                sys.exit()
+            new_game(input(f"#> {players[curr]} kicked {players[switch_player(curr)]}'s ass! (yes/no): ").lower())
+        elif check_draw_game():
+            new_game(input("#> Draw Games suck! Play again? (yes/no): ").lower())
+        
         curr = switch_player(curr)
 
         player_move = str(input(f"{players[curr]}: "))
@@ -60,8 +59,20 @@ def create_game(players):
         if(check_move(player_move)):
             register_move(player_move,curr)
         else:
-            print("Invalid Option!") ; input()
+            print("-- Invalid Option!") ; input()
             curr = switch_player(curr)
+
+def new_game(user_choice):
+    if (user_choice == "yes") or (user_choice == "y"):
+        main()
+    elif (user_choice == "no") or (user_choice == "n"):
+        sys.exit()
+
+def check_draw_game():
+    
+    if len(played_moves) == 9:
+        print("-- DRAW GAME!!") ; input()
+        return True
 
 def check_winner(board,curr,players):
 
@@ -89,7 +100,6 @@ def check_winner(board,curr,players):
             print("#> WE HAVE A WINNER!!") 
             print(f"#> {players[curr]} WON!!") 
             return True
-            #sys.exit()
     
 def check_move(player_move):
     allowed_moves = [ "00", "01" ,"02" , "10" , "11" , "12" , "20" , "21" , "22" ]
