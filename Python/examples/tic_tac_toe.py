@@ -11,7 +11,7 @@ from os import system, name
 import sys
 import time
 import random
-from typing import ParamSpecArgs
+#from typing import ParamSpecArgs
 
 def clear_screen():
     if name == "nt":
@@ -42,9 +42,10 @@ def create_game(players):
         game_title()
 
         #create_board()
-        print(str(board[0]).strip('[]'))
-        print(str(board[1]).strip('[]')) 
-        print(str(board[2]).strip('[]'))
+        print("   0    1    2")
+        print("0" , str(board[0]).strip('[]'))
+        print("1" , str(board[1]).strip('[]')) 
+        print("2" , str(board[2]).strip('[]'))
 
         if(check_winner(board,curr,players)):
             user_choice = input("#> Do you want to play again? (yes/no): ").lower()
@@ -86,7 +87,7 @@ def check_winner(board,curr,players):
     for i in range(0,len(winning_conditions)):
         if (p1_winner[0] == winning_conditions[i]) or (p2_winner[0] == winning_conditions[i]):
             print("#> WE HAVE A WINNER!!") 
-            print(f"#> {players[curr]} WON!!") ; input()
+            print(f"#> {players[curr]} WON!!") 
             return True
             #sys.exit()
     
