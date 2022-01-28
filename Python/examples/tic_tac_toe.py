@@ -3,6 +3,7 @@ from os import system, name
 import sys
 import time
 import random
+from typing import ParamSpecArgs
 
 def clear_screen():
     if name == "nt":
@@ -11,7 +12,7 @@ def clear_screen():
         system("clear")
 
 #check whether the player has a valid name
-#criteria here is: only letter allowed for names
+#name criteria: only letters allowed for names
 def check_player(player_name):
     if player_name.isalpha():
         return True
@@ -27,17 +28,19 @@ def create_game(players):
     curr = 1
 
     while True:
+        
+
         clear_screen()
         game_title()
 
-        curr = switch_player(curr)
-
         #create_board()
-
-        #check_winner() 
         print(str(board[0]).strip('[]'))
         print(str(board[1]).strip('[]')) 
         print(str(board[2]).strip('[]'))
+
+        check_winner(board,curr,players)
+
+        curr = switch_player(curr)
 
         player_move = str(input(f"{players[curr]}: "))
 
@@ -46,6 +49,47 @@ def create_game(players):
         else:
             print("Invalid Option!") ; input()
             curr = switch_player(curr)
+
+def check_winner(board,curr,players):
+
+    #board
+    # 00 01 02
+    # 10 11 12
+    # 20 21 22
+
+    winning_conditions = [  
+                            board[0][0] + board[0][1] + board[0][2], #row1
+                            board[1][0] + board[1][1] + board[1][2], #row2
+                            board[2][0] + board[2][1] + board[2][2], #row3
+                            board[0][0] + board[1][0] + board[2][0], #col1
+                            board[0][1] + board[1][1] + board[2][1], #col2
+                            board[0][2] + board[1][2] + board[2][2], #col3
+                            board[0][0] + board[1][1] + board[2][2], #diagonal1
+                            board[0][2] + board[1][1] + board[2][0]  #diagonal2
+                        ]
+
+    p1_winner = ['XXX']
+    p2_winner = ['OOO']
+
+    for i in range(0,len(winning_conditions)):
+        if (p1_winner == winning_conditions[i]) or (p2_winner == winning_conditions[i]):
+            print("#> WE HAVE A WINNER!!") 
+            print(f"#> {players[curr]} WON!!") ; input
+            sys.exit()
+        
+    #horizontais
+    #board[0]
+    #board[1]
+    #board[2]
+
+    #verticais
+    #board[0][0] + board[1][0] + board[2][0]
+    #board[0][1] + board[1][1] + board[2][1]
+    #board[0][2] + board[1][2] + board[2][2]
+
+    #diagonais
+    #board[0][0] + board[1][1] + board[2][2]
+    #board[0][2] + board[1][1] + board[2][0]
     
 def check_move(player_move):
     allowed_moves = [ "00", "01" ,"02" , "10" , "11" , "12" , "20" , "21" , "22" ]
@@ -61,7 +105,7 @@ def register_move(player_move,curr):
     if curr == 0:
         board[int(player_move[0])][int(player_move[1])] = "X"
     elif curr == 1:
-        board[int(player_move[0])][int(player_move[1])] = "Y"
+        board[int(player_move[0])][int(player_move[1])] = "O"
 
 def switch_player(current_player):
     if current_player == 0:
@@ -106,32 +150,3 @@ while True:
 
         case ("2"):
             sys.exit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
