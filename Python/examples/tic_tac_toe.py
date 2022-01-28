@@ -38,8 +38,12 @@ def create_game(players):
         print(str(board[1]).strip('[]')) 
         print(str(board[2]).strip('[]'))
 
-        check_winner(board,curr,players)
-
+        if(check_winner(board,curr,players)):
+            user_choice = input("#> Do you want to play again? (yes/no): ").lower()
+            if (user_choice == "yes") or (user_choice == "y"):
+                main()
+            elif (user_choice == "no") or (user_choice == "n"):
+                sys.exit()
         curr = switch_player(curr)
 
         player_move = str(input(f"{players[curr]}: "))
@@ -72,24 +76,11 @@ def check_winner(board,curr,players):
     p2_winner = ['OOO']
 
     for i in range(0,len(winning_conditions)):
-        if (p1_winner == winning_conditions[i]) or (p2_winner == winning_conditions[i]):
+        if (p1_winner[0] == winning_conditions[i]) or (p2_winner[0] == winning_conditions[i]):
             print("#> WE HAVE A WINNER!!") 
-            print(f"#> {players[curr]} WON!!") ; input
-            sys.exit()
-        
-    #horizontais
-    #board[0]
-    #board[1]
-    #board[2]
-
-    #verticais
-    #board[0][0] + board[1][0] + board[2][0]
-    #board[0][1] + board[1][1] + board[2][1]
-    #board[0][2] + board[1][2] + board[2][2]
-
-    #diagonais
-    #board[0][0] + board[1][1] + board[2][2]
-    #board[0][2] + board[1][1] + board[2][0]
+            print(f"#> {players[curr]} WON!!") ; input()
+            return True
+            #sys.exit()
     
 def check_move(player_move):
     allowed_moves = [ "00", "01" ,"02" , "10" , "11" , "12" , "20" , "21" , "22" ]
@@ -122,31 +113,35 @@ board = [row0,row1,row2]
 players = []
 played_moves = []
 
-while True:
+def main():
 
-    clear_screen()
-    game_title()
-    print("(1) - New Game")
-    print("(2) - Quit")
-    option = input("Option: ")
-    
-    match option:
-        case ("1"):
-            while True:
-            
-                clear_screen()
-                game_title()
-                print("##> NEW GAME")
+    while True:
 
-                player1 = input("Player 1: ")
-                player2 = input("Player 2: ")
+        clear_screen()
+        game_title()
+        print("(1) - New Game")
+        print("(2) - Quit")
+        option = input("Option: ")
+        
+        match option:
+            case ("1"):
+                while True:
+                
+                    clear_screen()
+                    game_title()
+                    print("##> NEW GAME")
 
-                if check_player(player1) and check_player(player2):
-                    players.append(player1)
-                    players.append(player2)
-                    create_game(players)
-                else:
-                    print("You have inserted invalid names!") ; input()
+                    player1 = input("Player 1: ")
+                    player2 = input("Player 2: ")
 
-        case ("2"):
-            sys.exit()
+                    if check_player(player1) and check_player(player2):
+                        players.append(player1)
+                        players.append(player2)
+                        create_game(players)
+                    else:
+                        print("You have inserted invalid names!") ; input()
+
+            case ("2"):
+                sys.exit()
+
+main()
