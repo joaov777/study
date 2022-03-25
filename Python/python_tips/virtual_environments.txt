@@ -1,6 +1,6 @@
 Installing Python
 
->>>>>>>>> Building from source
+>>>>>>>>>>> Building from source
 
 # Download Python
 wget https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tgz
