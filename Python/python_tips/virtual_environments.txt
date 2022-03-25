@@ -1,0 +1,132 @@
+Installing Python
+
+>>>>>>>>> Building from source
+
+# Download Python
+wget https://www.python.org/ftp/python/3.10.4/Python-3.10.4.tgz
+
+# Updating machine and install required packages
+sudo apt update -y && sudo apt upgrade -y && sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl -y
+
+# Extracting package and configuring
+tar -xf Python-3.10.4.tgz
+cd Python-3.10.4.tgz
+./configure --enable-optimizations
+
+# build python from source (this process may take some time). "altinstall" was used in order to keep the default Python binary path in /usr/bin/python
+sudo make altinstall
+
+# check installation
+python3.10 --version
+
+>>>>>>>>> From deadsnakes PPA
+
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.10
+
+
+
+<><><><><> Installing additional important modules <><><><><><>
+
+# downloading python3 pip (sudo pip install <module_name>) --> to install modules
+sudo apt install python3-pip
+
+<><><><><> Virtual Environments <><><><><>
+
+# Installing Virtualenv
+pip install virtualenv
+
+# creating a virtual environment with venv
+python3 -m venv <virtual_environment_name>
+
+# activating a virtual environment
+Unix --> source <virtual_environment_name>/bin/activate
+Windows --> source <virtual_environment_name>/Scripts/activate
+
+# deactivating a virtual environment
+deactivate
+
+<><><><><> Using virtualenvwrapper <><><><><><>
+# used to make virtual environments management
+
+# downloading the packages
+sudo pip3 install virtualenvwrapper
+sudo pip install virtualenv
+
+# checking wrapper location
+which virtualenvwrapper.sh
+
+# add these lines and change accordingly to your .bashrc / .zshrc / etc
+export WORKON_HOME=/opt/virtual
+export PROJECT_HOME=/opt
+export VIRTUALENVWRAPPER_PYTHON="$(which python3)"
+source /usr/local/bin/virtualenvwrapper.sh
+
+# source config file (.bashrc / .zshrc / etc)
+source ~/.bashrc OR source ~/.zshrc
+
+# creating the virtual environment
+mkvirtualenv teste3 
+mkvirtualenv teste4 -p $(which python3.10) ---> choosing an specific python version
+
+# listing all virtual environments available
+workon
+
+# choosing a virtual environment
+workon <virtual_environment_name>
+
+# deactivating a virtualenv
+deactivate
+
+# acessing virtualenv folder
+cdvirtualenv
+
+# returning to previous folder
+cd -
+
+# removing specific virtualenv
+rmvirtualenv <virtual_environment_name>
+
+<><><><><><><> Using Pyenv <><><><><><><>
+# used to easily switch between Python versions
+
+# download pyenv
+curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+
+# add these lines to .bashrc / .zshrc / etc
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# testing download of an specific python version
+pyenv install 3.5.0
+
+# checking python versions
+pyenv versions
+
+# switching version locally
+pyenv local 2.7.11
+pyenv local 3.5.0
+pyenv local 3.10.2
+
+# switching python version globally
+pyenv global 2.7.11
+pyenv global 3.5.0
+pyenv global 3.10.2
+
+Obs.: regardless of local or global, a file named .python-version is created in the current environment
+
+## Small script to check python current version in used
+import sys
+print('Using version:', sys.version[:5])
+
+Examples
+$ python main.py
+Using version: 2.7.5
+$ pyenv global 3.5.0
+$ pyenv exec python main.py
+Using version: 3.5.0
+$ pyenv local 2.7.11
+$ pyenv exec python main.py
+Using version: 2.7.11
