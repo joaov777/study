@@ -33,6 +33,9 @@ sudo apt install python3.10
 sudo apt install python3-pip
 
 python3.10 -m ensurepip --upgrade
+
+# upgrading pip
+python -m pip install --upgrade pip
 <><><><><> Virtual Environments <><><><><>
 
 # Installing Virtualenv
