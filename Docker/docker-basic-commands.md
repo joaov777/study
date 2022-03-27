@@ -27,6 +27,9 @@ docker container run --publish 80:80 --detach --name webhost nginx (nginx daemon
 docker container run -it -p 80:80 nginx (interactive - create a new container and enters into it)
 docker container run -d -p 8080:80 --name mynginx nginx
 docker container run -d -p 8081:80 --name myapache httpd
+docker container run --name postgres-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+docker container run -it --name mypostgres -e POSTGRES_USER="pgsql" -e POSTGRES_PASSWORD="pgsql1234" postgres 
+docker container run -p 5432:5432 -d --name mypostgres -e POSTGRES_PASSWORD=pgsql1234 -e POSTGRES_USER=pgsql --restart unless-stopped --network db_net postgres
 docker container run -d -p 3306:3306 --name mymysql --env MYSQL_ROOT_PASSWORD=123123 mysql
 docker container run -d --name mymysql --restart unless-stopped -p 3306:3306 --network mynet123 -e MYSQL_ROOT_PASSWORD=123123 mysql:latest 
 docker container run -d --name mymysql --restart unless-stopped -p 3306:3306 --network mynet123 -e MYSQL_ROOT_PASSWORD=123123 mysql:5.7 
@@ -106,6 +109,7 @@ sudo service docker start / stop / restart=
 ##### Saving a container into an image (current state)
 ```
 docker commit <CONTAINER_ID> <NEW_NAME>:<VERSION>
+docker container commit myarch3 arch:mainconf
 ```
 ##### Verificar se o daemon está em funcionamento
 ```
@@ -140,7 +144,13 @@ docker container stats <CONTAINER_NAME_OR_ID>
 ```
 docker container run -it alpine sh (Alpine doesn't come with bash by default)
 ```
----
+##### Postgres tips
+Download this on the VM to access the dockerized postgres database
+``` 
+sudo apt install postgresql-client -y
+psql -h localhost -p 5432 -U postgres
+
+```
 ---
 # Docker Networking
 - A lot of the options built within containers can be changed. 
