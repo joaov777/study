@@ -147,9 +147,10 @@ docker container run -it alpine sh (Alpine doesn't come with bash by default)
 ##### Postgres tips
 Download this on the VM to access the dockerized postgres database
 ``` 
+sudo service postgresql status
+sudo service postgresql start
 sudo apt install postgresql-client -y
 psql -h localhost -p 5432 -U postgres
-
 ```
 ---
 # Docker Networking
