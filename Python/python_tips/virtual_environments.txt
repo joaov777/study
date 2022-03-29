@@ -30,7 +30,8 @@ sudo apt install python3.10
 <><><><><> Installing additional important modules <><><><><><>
 
 # downloading python3 pip (sudo pip install <module_name>) --> to install modules
-sudo apt install python3-pip
+sudo apt install python3-pip -y
+sudo apt install python3-dev -y
 
 python3.10 -m ensurepip --upgrade
 
