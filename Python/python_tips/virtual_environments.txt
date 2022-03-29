@@ -42,6 +42,7 @@ python -m pip install --upgrade pip
 pip install virtualenv
 
 # creating a virtual environment with venv
+sudo apt install python3-venv -y
 python3 -m venv <virtual_environment_name>
 
 # activating a virtual environment
