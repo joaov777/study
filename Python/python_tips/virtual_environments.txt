@@ -80,6 +80,11 @@ source ~/.bashrc OR source ~/.zshrc
 mkvirtualenv teste3 
 mkvirtualenv teste4 -p $(which python3.10) ---> choosing an specific python version
 
+Obs.: Caso tenha problemas, basta executar os comandos abaixo:
+==> sudo apt install virtualenv
+==> pip3 uninstall virtualenv
+==> pip install virtualenv
+
 # listing all virtual environments available
 workon
 
@@ -96,7 +101,7 @@ cdvirtualenv
 cd -
 
 # removing specific virtualenv
-rmvirtualenv <virtual_environment_name>
+rm virtualenv <virtual_environment_name>
 
 <><><><><><><> Using Pyenv <><><><><><><>
 # used to easily switch between Python versions
