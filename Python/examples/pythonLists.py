@@ -63,4 +63,3 @@ while True:
         case ("3"):
             list_all_fruits(fruits)
             input()
-
