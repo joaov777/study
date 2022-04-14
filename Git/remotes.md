@@ -19,6 +19,11 @@ git remote add "$(basename -s .git $(git config --get remote.origin.url))_gitlab
 git remote add "$(basename -s .git $(git config --get remote.origin.url))_github" git@github.com:joaov777/"$(basename -s .git `git config --get remote.origin.url`)"
 ```
 
+- Pushing to multiple remotes 
+```bash
+git push study_github && git push study_gitlab 
+```
+
 
 
 
