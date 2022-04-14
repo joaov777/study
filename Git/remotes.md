@@ -21,7 +21,7 @@ git remote add "$(basename -s .git $(git config --get remote.origin.url))_github
 
 - Pushing to multiple remotes 
 ```bash
-git push study_github && git push study_gitlab 
+git push study_github master && git push study_gitlab master 
 ```
 
 
