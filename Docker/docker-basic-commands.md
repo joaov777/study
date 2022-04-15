@@ -338,3 +338,8 @@ COPY index.html index.html
 
 #Expose and CMD don't necessarily neeed to be especified since they are in my FROM
 ```
+
+- Running a container based on an image and using systemd (attaching to mylan)
+```bash
+docker container run -itd --privileged updated_arch02 /usr/sbin/init --network mylan --restart unless-stopped updated_arch02
+```
