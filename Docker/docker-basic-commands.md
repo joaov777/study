@@ -181,14 +181,25 @@ docker push <USERNAME>/<IMAGE_NAME>:<TAG>
 docker push joaov777/manjaro-dotfiles:latest
 ```
 
-##### Postgres tips
-Download this on the VM to access the dockerized postgres database
+##### Databases tips
+- POSTGRES - Download this on the VM to access the dockerized postgres database
 ``` 
 sudo service postgresql status
 sudo service postgresql start
 sudo apt install postgresql-client -y
 psql -h localhost -p 5432 -U postgres
 ```
+
+- MARIADB
+```bash
+# creating a mariadb container
+docker container run -p 3306:3306 -d --name mymariadb -e MARIADB_PASSWORD=mariadbdb -e MARIADB_USER=mariadbdb -e MARIADB_ROOT_PASSWORD=mariadbdbroot --restart unless-stopped mariadb:latest
+
+# access the running container
+docker exec -it mymariadb bash
+```
+
+
 ---
 # Docker Networking
 - A lot of the options built within containers can be changed. 
