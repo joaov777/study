@@ -148,6 +148,21 @@ docker container run -it alpine sh (Alpine doesn't come with bash by default)
 ```bash
 docker container run -itd --privileged updated_arch02 /usr/sbin/init --network mylan --restart unless-stopped updated_arch02
 ```
+- Installing different distros
+```bash
+## Opensuse
+docker pull opensuse/leap #or opensuse/tumbleweed
+docker container run -itd --name opensuse01 --network mylan --restart unless-stopped opensuse/leap
+
+## Debian
+docker pull debian
+docker container run -itd --name debian01 --network mylan --restart unless-stopped debian
+
+## Arch Linux
+docker pull archlinux
+docker container -itd --name arch01 --network mylan --restart unless-stopped archlinux
+```
+
 ##### Postgres tips
 Download this on the VM to access the dockerized postgres database
 ``` 
