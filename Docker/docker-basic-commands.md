@@ -144,6 +144,10 @@ docker container stats <CONTAINER_NAME_OR_ID>
 ```
 docker container run -it alpine sh (Alpine doesn't come with bash by default)
 ```
+- Running a container based on an image and using systemd (attaching to mylan)
+```bash
+docker container run -itd --privileged updated_arch02 /usr/sbin/init --network mylan --restart unless-stopped updated_arch02
+```
 ##### Postgres tips
 Download this on the VM to access the dockerized postgres database
 ``` 
@@ -339,7 +343,4 @@ COPY index.html index.html
 #Expose and CMD don't necessarily neeed to be especified since they are in my FROM
 ```
 
-- Running a container based on an image and using systemd (attaching to mylan)
-```bash
-docker container run -itd --privileged updated_arch02 /usr/sbin/init --network mylan --restart unless-stopped updated_arch02
-```
+
