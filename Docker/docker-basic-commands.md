@@ -197,6 +197,9 @@ docker container run -p 3306:3306 -d --name mymariadb -e MARIADB_PASSWORD=mariad
 
 # access the running container
 docker exec -it mymariadb bash
+
+# after the command above
+mysql -u mariadbdb -h localhost -p
 ```
 
 
