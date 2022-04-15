@@ -163,6 +163,24 @@ docker pull archlinux
 docker container -itd --name arch01 --network mylan --restart unless-stopped archlinux
 ```
 
+- Saving running container and pushing it to docker hub
+```bash
+# saving/comitting the running container
+docker commit <CONTAINER ID or NAME> <final_name>
+docker commit manjaro01 manjaro-dotfiles
+
+# creating a tag
+docker tag <IMAGE ID or IMAGE NAME> <USERNAME>/<IMAGE_NAME>:<TAG>
+docker tag manjaro-dotfiles joaov777/manjaro-dotfiles:latest
+
+# login to docker hub
+docker login -u <username> -p <password> docker.io
+
+# pushing to docker hub
+docker push <USERNAME>/<IMAGE_NAME>:<TAG>
+docker push joaov777/manjaro-dotfiles:latest
+```
+
 ##### Postgres tips
 Download this on the VM to access the dockerized postgres database
 ``` 
