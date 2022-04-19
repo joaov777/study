@@ -7,7 +7,7 @@
 
 2. Reinicie a máquina
 
-3. Instalar o WSL2
+3. Instalando o WSL2
 ```bash 
 wsl --install
 # reinicie a máquina
