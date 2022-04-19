@@ -33,6 +33,7 @@ docker container run -p 5432:5432 -d --name mypostgres -e POSTGRES_PASSWORD=pgsq
 docker container run -d -p 3306:3306 --name mymysql --env MYSQL_ROOT_PASSWORD=123123 mysql
 docker container run -d --name mymysql --restart unless-stopped -p 3306:3306 --network mynet123 -e MYSQL_ROOT_PASSWORD=123123 mysql:latest 
 docker container run -d --name mymysql --restart unless-stopped -p 3306:3306 --network mynet123 -e MYSQL_ROOT_PASSWORD=123123 mysql:5.7 
+docker container run -itd --name mynginx3 --restart unless-stopped -p 8888:80 -P nginx (o serviço fica aberto localmente em localhost:8888)
 ```
 There is a fundamental difference between the commands below:
 - **docker container run** - Always start a new container
