@@ -214,6 +214,7 @@ docker container run -it --rm --name meu_python_3.8.11_com_bash python:3.8.11 ba
 - Executando um script local diretamente no container
 ```bash
 cat teste.sh | docker exec -i meu_python bash
+docker exec -i meu_python bash < teste.sh
 ```
 
 - Executando um comando shell diretamente no container
