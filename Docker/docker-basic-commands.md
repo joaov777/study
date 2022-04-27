@@ -221,6 +221,15 @@ cat teste.sh | docker exec -i meu_python bash
 docker exec meu_python bash -c  "[ -d teste ] && rm -rf teste || mkdir teste"
 ```
 
+- Destruindo container 
+```bash
+# destroying container from within the container
+docker exec meu_python bash -c "exit"
+
+# destroying container from the local machine
+docker container stop meu_python
+```
+
 ---
 # Docker Networking
 - A lot of the options built within containers can be changed. 
