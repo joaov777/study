@@ -202,7 +202,24 @@ docker exec -it mymariadb bash
 # after the command above
 mysql -u mariadbdb -h localhost -p
 ```
+---
 
+- Executando um container que se auto destrói ao terminar de usá-lo
+```bash
+docker container run -it --rm --name meu_prompt_python_3.8.11 python:3.8.11
+docker container run -it --rm --name meu_python_mais_atual_com_bash /bin/bash
+docker container run -it --rm --name meu_python_3.8.11_com_bash python:3.8.11 bash
+```
+
+- Executando um script local diretamente no container
+```bash
+cat teste.sh | docker exec -i meu_python bash
+```
+
+- Executando um comando shell diretamente no container
+```bash
+docker exec meu_python bash -c  "[ -d teste ] && rm -rf teste || mkdir teste"
+```
 
 ---
 # Docker Networking
