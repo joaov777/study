@@ -230,6 +230,11 @@ docker exec meu_python bash -c "exit"
 docker container stop meu_python
 ```
 
+- Mapeando um volume/pasta local ao container
+```bash
+ docker container run -it --rm --name meu_python -v $PWD:/teste python:3.8.11 /bin/bash
+```
+
 ---
 # Docker Networking
 - A lot of the options built within containers can be changed. 
