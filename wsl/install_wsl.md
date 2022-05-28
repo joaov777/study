@@ -21,3 +21,11 @@ wsl --install -d <DISTRO_NAME>
 ```
 
 5. Configure a distribuição
+# check all available distros
+wsl -l -d
+
+# checking wsl version for all distros locally installed
+wsl -l -v
+
+# converting a distro to wsl2
+wsl --set-version Ubuntu-20.04 2
