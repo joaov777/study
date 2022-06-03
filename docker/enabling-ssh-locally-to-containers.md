@@ -89,6 +89,7 @@ netsh int portproxy reset all
 
 # to display all the rules
 netsh interface portproxy show v4tov4
+```
 
 ### Testing access to containers from the local machine
 ```bash
