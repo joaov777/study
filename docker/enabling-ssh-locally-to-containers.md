@@ -4,6 +4,7 @@
 ### Creating the base image
 
 - Creating a Dockerfile to build a base image
+
 vim Dockerfile
 ```bash
 FROM ubuntu:latest
