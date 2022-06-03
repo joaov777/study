@@ -115,6 +115,7 @@ ssh localhost -p 2224
  - Next and Finish 
 
 ### Testing access from a lan remote machine
+```bash
 ssh -p <exposed_port> <user>@<local_machine_ip>
 ssh -p 2222 joao@192.168.16.190
 ```
