@@ -102,3 +102,9 @@ ssh -p 2222 127.0.0.1
 # connecting to container03
 ssh localhost -p 2224
 ```
+
+### Enabling LAN access to the containers
+```bash
+# Windows Defender Firewall with Advanced Security > Inbound Rules > New Rule > Port > TCP > Specific local ports (exposed port on WSL) > Allow the connection > Next and Finish 
+
+```
