@@ -300,6 +300,12 @@ docker network create my_lan2 --subnet 10.11.12.0/24 (Creating a new subnet)
 docker network connect
 docker network connect <NETWORK_NAME_OR_ID> <CONTAINER_NAME_OR_ID> 
 docker network connect my_lan2 <CONTAINER_ID>
+
+# attaching my_net network to container named "ubuntu" with an specific IP address
+docker network connect --ip 10.20.30.40 my_net ubuntu
+
+# pinging from one container to another within the same docker network
+docker container exec -it ubuntu ping webhost
 ```
 ##### Detach a network from a container
 - This command dinamically removes a NIC within a container on an existing virtual network.
