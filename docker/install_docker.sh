@@ -27,7 +27,7 @@ fi
 
 }
 
-apt update -y && apt upgrade -y && apt install sudo curl -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt install sudo curl -y
 echo "--- Preparing to install docker and docker compose..." && sleep 5
 install_docker 
 
