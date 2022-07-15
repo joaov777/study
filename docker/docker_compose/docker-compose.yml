@@ -1,0 +1,43 @@
+version: '3.8'
+
+networks:
+  my_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "40.40.40.0/24"
+          gateway: "40.40.40.254"
+
+services:
+  first_server:
+    tty: true
+    hostname: server1
+    networks:
+      my_net:
+        ipv4_address: '40.40.40.4'
+        aliases:
+          - server01
+          - server001
+    container_name: server1
+    volumes:
+      - .:/myvolume:rw
+    ports:
+      - "9090-9095:8080"
+    environment:
+      MYKEY: example
+    image:  ubuntu:latest
+
+  second_server:
+    tty: true
+    hostname: server2
+    networks:
+      my_net:
+        ipv4_address: '40.40.40.2'
+        aliases:
+          - server02
+          - server002
+          - server0002
+    container_name: server2
+    volumes:
+      - ~:/myhomeonserver2
+    image: manjarolinux/base
