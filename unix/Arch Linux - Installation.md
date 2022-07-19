@@ -241,8 +241,9 @@ sudo pacman -S xorg xorg-server --noconfirm
 visudo
 %wheel ALL=(ALL) NOPASSWD:ALL
 
-git clone https://github.com/joaov777/mainconf.git
-~/mainconf/mainconf.sh
+git clone https://github.com/joaov777/dotfiles.git
+~/dotfiles/dotfiles.sh i3
+~/dotfiles/dotfiles.sh i3
 
 visudo
 #%wheel ALL=(ALL) NOPASSWD: ALL
