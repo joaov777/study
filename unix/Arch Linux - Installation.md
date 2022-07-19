@@ -243,7 +243,7 @@ visudo
 
 git clone https://github.com/joaov777/dotfiles.git
 ~/dotfiles/dotfiles.sh i3
-~/dotfiles/dotfiles.sh i3
+~/dotfiles/dotfiles.sh xfce
 
 visudo
 #%wheel ALL=(ALL) NOPASSWD: ALL
