@@ -1,3 +1,5 @@
+# Creating two simple services in order to test nomenclature of docker compose files
+
 version: '3.8'
 
 networks:
