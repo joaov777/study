@@ -28,6 +28,13 @@ docker container run -it -p 80:80 nginx (interactive - create a new container an
 docker container run -d -p 8080:80 --name mynginx nginx
 docker container run -d -p 8081:80 --name myapache httpd
 docker container run --name postgres-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+# creating a temporary container without password with user 'postgres'
+docker run -it --rm -p 5435:5432 -e POSTGRES_HOST_AUTH_METHOD=trust --name mydb postgres
+
+# creating a temporary container with user and password set
+docker run -it --rm -p 5435:5432 -e POSTGRES_USER=mydbuser -e POSTGRES_PASSWORD=mydbiscool --name mydb postgres
+
 docker container run -it --name mypostgres -e POSTGRES_USER="pgsql" -e POSTGRES_PASSWORD="pgsql1234" postgres 
 docker container run -p 5432:5432 -d --name mypostgres -e POSTGRES_PASSWORD=pgsql1234 -e POSTGRES_USER=pgsql --restart unless-stopped --network db_net postgres
 docker container run -d -p 3306:3306 --name mymysql --env MYSQL_ROOT_PASSWORD=123123 mysql
