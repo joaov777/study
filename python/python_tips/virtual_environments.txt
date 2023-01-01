@@ -25,8 +25,6 @@ sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install python3.10
 
-
-
 <><><><><> Installing additional important modules <><><><><><>
 
 # downloading python3 pip (sudo pip install <module_name>) --> to install modules
@@ -37,10 +35,14 @@ python3.10 -m ensurepip --upgrade
 
 # upgrading pip
 python -m pip install --upgrade pip
+
 <><><><><> Virtual Environments <><><><><>
 
 # Installing Virtualenv
 pip install virtualenv
+
+# Creating a new virtual environment with virtualenv
+virtualenv virtual2 -p $(which python3)
 
 # creating a virtual environment with venv
 sudo apt install python3-venv -y
