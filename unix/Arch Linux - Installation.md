@@ -29,7 +29,11 @@ loadkeys br-abnt2
 ping 8.8.8.8
 
 #Enabling wireless/wifi connectivity
-wifi-menu
+iwctl 
+iwctl station wlan0 scan
+iwctl --passphrase="password" station wlan0 connect "SSID"
+iwctl station wlan0 disconnect
+
 
 #Enabling ethernet addressing
 dhclient
