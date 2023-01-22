@@ -1,6 +1,12 @@
 # install winget from the microsoft store (App installer)
 # installing all packages based on a json file
-winget -i import --accept-packages-agreements --accept-source-agreements
+winget import -i  PATH\TO\JSON.json --accept-packages-agreements --accept-source-agreements
 
 # upgrading all
 winget upgrade --all --accept-package-agreements accept-source-agreements
+
+# exporting all packages list
+winget export -o PATH\TO\EXPORT.json
+
+# installing everything without confirming 
+winget import -i PATH\TO\IMPORT.json --silent
