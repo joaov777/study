@@ -1,0 +1,18 @@
+Comandos úteis git:
+
+# procurar por um arquivo alterado nos commits 
+git log -p --stat <file name>
+
+# mostrar os arquivos alterados em um commit
+git show <commit hash> --name-only
+
+# desfazer alterações em arquivos na área stage para último commit
+git reset
+
+# desfazer alterações feitas para último commit feito
+git reset --hard HEAD
+git reset --soft HEAD
+git reset --mixed HEAD
+
+# desfazer alterações para commit específico
+git reset --hard <commit hash>
