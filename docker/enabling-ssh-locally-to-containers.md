@@ -121,11 +121,15 @@ ssh -p <exposed_port> <user>@<local_machine_ip>
 ssh -p 2222 joao@192.168.16.190
 ```
 ### Adding ports to the firewall (to be exposed on the LAN)
+```bash
 netsh advfirewall firewall add rule name="inbound suap dev" dir=in action=allow protocol=TCP localport=8001
 netsh advfirewall firewall add rule name="inbound suap dev" dir=in action=allow protocol=TCP localport=8000
+```
 
 ### WSL Port forwarding
+```bash
 netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=8001 connectaddress=localhost connectport=8001
+```
 - listenaddress = where to accept connections from 
 - listenport = port exposed and used by other lan users to connect to you (in the browser)
 - connectaddress = localhost (localhost automatically uses wsl)
