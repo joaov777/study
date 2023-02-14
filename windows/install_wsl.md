@@ -5,6 +5,14 @@
 	- Plataforma de maquina virtual
 	- Subsistema do Windows para Linux	
 
+Ou executar somente os comandos abaixo
+```bash
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+bcdedit /set hypervisorlaunchtype auto
+Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All -NoRestart
+```
+
 2. Reinicie a máquina
 
 3. Instalando o WSL2

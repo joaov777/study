@@ -24,3 +24,15 @@ winget install Microsoft.WindowsTerminal
 winget install Spotify.Spotify
 winget install Microsoft.VisualStudioCode
 winget install XP89DCGQ3K6VLD
+winget install Canonical.Ubuntu.2204
+winget install Canonical.Ubuntu.2004
+winget install Debian.Debian
+winget install  
+winget install
+winget install
+winget install
+winget install
+
+
+
+
