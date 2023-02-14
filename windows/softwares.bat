@@ -27,10 +27,10 @@ winget install XP89DCGQ3K6VLD
 winget install Canonical.Ubuntu.2204
 winget install Canonical.Ubuntu.2004
 winget install Debian.Debian
-winget install  
-winget install
-winget install
-winget install
+winget install flux.flux
+winget install Rufus.Rufus
+winget install Espanso.Espanso
+winget install OBSProject.OBSStudio
 winget install
 
 
