@@ -94,7 +94,7 @@ echo "options timeout:1" >> /etc/resolv.conf
 - **Downloading Arch Linux core**
 
 ```bash
-pacstrap /mnt base linux linux-firmware vim vi nano iwctl  
+pacstrap /mnt base linux linux-firmware vim vi nano iwctl netctl
 ```
 
 - **Configuring disks through fstab**
