@@ -94,7 +94,7 @@ echo "options timeout:1" >> /etc/resolv.conf
 - **Downloading Arch Linux core**
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware vim vi nano iwctl netctl
+pacstrap /mnt base base-devel linux linux-firmware vim vi nano 
 ```
 
 - **Configuring disks through fstab**
@@ -120,16 +120,16 @@ hwclock --systohc
 - **Setting up system language and keyboard language**
 
 ```bash
-echo pt_BR.UTF-8 UTF-8 >> /etc/locale.gen
-echo LANG=pt_BR.UTF-8 > /etc/locale.conf
-echo KEYMAP=pt_BR.UTF-8 > /etc/vconsole.conf
+echo pt_BR.UTF-8 UTF-8 >> /etc/locale.gen &&
+echo LANG=pt_BR.UTF-8 > /etc/locale.conf &&
+echo KEYMAP=pt_BR.UTF-8 > /etc/vconsole.conf &&
 locale-gen
 
 OR
 
-echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-echo KEYMAP=en_US.UTF-8 > /etc/vconsole.conf
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen &&
+echo LANG=en_US.UTF-8 > /etc/locale.conf &&
+echo KEYMAP=en_US.UTF-8 > /etc/vconsole.conf &&
 locale-gen
 
 ```
