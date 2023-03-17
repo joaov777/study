@@ -16,3 +16,6 @@ git reset --mixed HEAD
 
 # desfazer alterações para commit específico
 git reset --hard <commit hash>
+
+# Reverte alterações de um arquivo desde último commit
+git checkout <nome do arquivo>
