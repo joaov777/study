@@ -19,3 +19,6 @@ git reset --hard <commit hash>
 
 # Reverte alterações de um arquivo desde último commit
 git checkout <nome do arquivo>
+
+# Criar uma nova branch e mudar para ela ao mesmo tempo
+git checkout -b <nova-branch>
