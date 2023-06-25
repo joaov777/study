@@ -17,7 +17,6 @@ ls /sys/firmware/efi/efivars
 - **[Optional] Enabling SSH access for a remote computer installation:**
 
 ```bash
-sudo systemctl start sshd.service
 sudo systemctl enable sshd.service --now
 passwd 
 ```
@@ -29,11 +28,12 @@ loadkeys br-abnt2
 ping 8.8.8.8
 
 #Enabling wireless/wifi connectivity
-iwctl 
+iwctl list
+iwctl station wlan0 get-networks
 iwctl station wlan0 scan
 iwctl --passphrase="password" station wlan0 connect "SSID"
+iwctl station wlan0 connect DONABELINHA2
 iwctl station wlan0 disconnect
-
 
 #Enabling ethernet addressing
 dhclient
@@ -94,7 +94,7 @@ echo "options timeout:1" >> /etc/resolv.conf
 - **Downloading Arch Linux core**
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware vim vi nano 
+pacstrap /mnt base base-devel linux linux-firmware vim vi nano iwctl tilix netctl
 ```
 
 - **Configuring disks through fstab**
@@ -138,16 +138,12 @@ locale-gen
 
 ```bash
 echo arch > /etc/hostname
-cat /etc/hostname
 ```
 
 - **Update hosts file**
 
 ```bash
-
-echo "127.0.0.1 localhost" > /etc/hosts &&
-echo "::1 localhost" >> /etc/hosts &&
-echo "127.0.0.1 `hostname`.localdomain `hostname`" >> /etc/hosts
+echo "127.0.0.1 localhost" > /etc/hosts && echo "::1 localhost" >> /etc/hosts 
 ```
 
 - **Adding a new user and setting up its new password**
@@ -161,7 +157,7 @@ passwd joao
 
 ```bash
 
-pacman -S dosfstools os-prober mtools network-manager-applet networkmanager \
+pacman -S archlinux-keyring dosfstools os-prober mtools network-manager-applet networkmanager \
 wpa_supplicant wireless_tools pavucontrol dialog sudo pulseaudio git \
 pulseaudio-alsa --noconfirm --needed
 ```
@@ -204,16 +200,20 @@ reboot
 - **Check internet connectivity**
 
 ```bash
+
+# enable network manager
+sudo systemctl enable NetworkManager --now
+sudo systemctl status NetworkManager
+
 ping 8.8.8.8
 host uol.com.br
 ping google.com
 
-#In case of wifi (download netctl package)
-wifi-menu
+# Wifi with netctl
+wifi-menu 
 
-#might be necessary to enable networkmanager
-sudo systemctl enable NetworkManager --now
-sudo systemctl status NetworkManager
+# Wifi with iwctl
+iwctl
 
 #In case ethernet card does not get IP 
 dhcpd <ethernet_interface>
