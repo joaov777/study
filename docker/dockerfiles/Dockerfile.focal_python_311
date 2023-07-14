@@ -1,0 +1,55 @@
+# Stage 1: Building Python 3.11
+FROM ubuntu:20.04 AS builder
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV LANG C.UTF-8
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libncurses5-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    wget \
+    llvm \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
+    libffi-dev \
+    liblzma-dev \
+    python-openssl \
+	&& rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp
+
+RUN wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tar.xz && \
+    tar -xf Python-3.11.0.tar.xz && \
+    cd Python-3.11.0 && \
+    ./configure --enable-optimizations --prefix=/usr/local && \
+    make -j $(nproc) && \
+    make install
+
+# Stage 2: Creating the final image
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV LANG C.UTF-8
+
+RUN apt-get update && apt-get install -y \
+    libssl1.1 \
+    libncursesw6 \
+    libreadline8 \
+    libsqlite3-0 \
+    libffi7 \
+    zlib1g \
+    tk \
+	&& rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local /usr/local
+
+CMD ["bash"]
+
+# you can build this image like this
+# docker build -t focal_python_311 -f Dockerfile.focal_python_311 .
