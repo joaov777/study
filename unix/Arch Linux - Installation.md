@@ -20,18 +20,20 @@ sudo systemctl enable sshd.service --now && passwd
 ```bash
 loadkeys br-abnt2
 
-#Enabling wireless/wifi connectivity
-iwctl list
-iwctl station wlan0 get-networks
+#enabling wireless/wifi connectivity (make sure you check your wlan device name)
+ip -br a 
 iwctl station wlan0 scan
-iwctl --passphrase="password" station wlan0 connect "SSID"
-iwctl station wlan0 connect DONABELINHA2
-iwctl station wlan0 disconnect
+iwctl station wlan0 get-networks
+iwctl station wlan0 connect <SSID>
 
-#Enabling ethernet addressing
+# Alguns comandos para referência
+_iwctl --passphrase="password" station wlan0 connect "SSID"_
+_iwctl station wlan0 disconnect_
+
+# enabling ethernet 
 dhclient
 
-#Making sure the system time is right
+# making sure the system time is right
 timedatectl set-ntp true
 
 ```
