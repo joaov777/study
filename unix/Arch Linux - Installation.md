@@ -37,13 +37,21 @@ timedatectl set-ntp true
 - **Partitioning the system**
 
 ```bash
+# check current partition and drive status
 fdisk -l
 lsblk
 
-#You can use fdisk (cli) or cfdisk (graphical) for partitioning
-fdisk /dev/sdX **OR** cfdisk /dev/sdX 
+# start partitioning
+fdisk /dev/sdX
 
-#For this installation
+# commands for fdisk
+p -- show current partition layout
+o -- new partition table
+n -- new partition
+t -- set partition type
+a -- activate the bootable flag on the partition
+
+# for this installation
 /dev/sda1 --> /boot ==> 512M
 /dev/sda2 --> / ==> Left space
 ```
