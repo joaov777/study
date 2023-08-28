@@ -250,6 +250,13 @@ dhcpd <ethernet_interface>
 sudo pacman -Syyuu
 ```
 
+- **[Optional] In case of errors with Arch linux keyring and PGP signatures**
+
+```bash
+sudo pacman -Sc
+sudo pacman-key --init && sudo pacman-key --populate && sudo pacman -S archlinux-keyring --noconfirm --needed
+```
+
 - **Installing Xorg**
 
 ```bash
