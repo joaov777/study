@@ -2,7 +2,7 @@
 
 In this tutorial, you will learn how to install Arch Linux.
 
-- **Check whether your system supports UEFI or BIOS**
+- **Checking whether your system supports UEFI or BIOS**
 
 ```bash
 ls /sys/firmware/efi/efivars
