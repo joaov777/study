@@ -7,7 +7,7 @@ In this tutorial, you will learn how to install Arch Linux.
 ```bash
 ls /sys/firmware/efi/efivars
 ```
-_If nothing shows up**. Then your system supports BIOS. But if something is displayed on your shell. Then your systems supports UEFI._
+_If nothing shows up. Then your system supports BIOS. But if something is displayed on your shell. Then your systems supports UEFI._
 
 - **[Optional] Enabling SSH access for a remote computer installation:**
 
