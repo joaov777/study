@@ -98,11 +98,10 @@ mkfs.ext4 /dev/sda2
 - **Mounting Partitions**
 
 ```bash
-#BIOS Legacy
+# BIOS Legacy
 mount /dev/sda2 /mnt
-ls /mnt #(lost+found)
 --------
-#UEFI
+# UEFI
 mount /dev/sda2 /mnt
 mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
