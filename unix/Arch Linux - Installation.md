@@ -7,12 +7,7 @@ In this tutorial, you will learn how to install Arch Linux.
 ```bash
 ls /sys/firmware/efi/efivars
 ```
-
-<aside>
-💡 **If nothing shows up**. Then your system supports BIOS.
-**If something is displayed on your shell**. Then your systems supports UEFI.
-
-</aside>
+_If nothing shows up**. Then your system supports BIOS. But if something is displayed on your shell. Then your systems supports UEFI._
 
 - **[Optional] Enabling SSH access for a remote computer installation:**
 
@@ -25,7 +20,6 @@ passwd
 
 ```bash
 loadkeys br-abnt2
-ping 8.8.8.8
 
 #Enabling wireless/wifi connectivity
 iwctl list
@@ -75,20 +69,12 @@ mkfs.ext4 /dev/sda2
 #BIOS Legacy
 mount /dev/sda2 /mnt
 ls /mnt #(lost+found)
-
 --------
-
 #UEFI
 mount /dev/sda2 /mnt
 ls /mnt #(lost+found)
 mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
-```
-
-- **Edit resolv.conf**
-
-```bash
-echo "options timeout:1" >> /etc/resolv.conf
 ```
 
 - **Downloading Arch Linux core**
@@ -171,7 +157,7 @@ passwd
 - **Update hosts file**
 
 ```bash
-echo "127.0.0.1 localhost" > /etc/hosts && echo "127.0.1.1 $HOSTNAME"
+echo "127.0.0.1 localhost" > /etc/hosts && echo "127.0.1.1 $HOSTNAME" >> /etc/hosts
 ```
 
 - **Adding a new user and setting up its new password**
@@ -219,27 +205,11 @@ visudo
 - **Check internet connectivity**
 
 ```bash
-
-# enable network manager
-sudo systemctl enable NetworkManager --now
-sudo systemctl status NetworkManager
-
-# Wifi with netctl
-wifi-menu 
-
 # Wifi with iwctl
 iwctl
 
 #In case ethernet card does not get IP 
 dhcpd <ethernet_interface>
-```
-
-- **[Optional] Installing openssh for remote access**
-
-```bash
-sudo pacman -S openssh
-sudo systemctl start sshd.service
-sudo systemctl enable sshd.service --now
 ```
 
 - **Syncronizing and updating package database**
@@ -260,12 +230,11 @@ sudo pacman -S xorg xorg-server --noconfirm
 visudo
 %wheel ALL=(ALL) NOPASSWD:ALL
 
-git clone https://github.com/joaov777/dotfiles.git $HOME && $HOME/dotfiles/dotfiles.sh
+git clone https://github.com/joaov777/dotfiles.git $HOME/dotfiles && $HOME/dotfiles/dotfiles.sh
 
 #virtualbox related
-pacman -S virtualbox-guest-utils xf86-video-vmware \
-mesa mesa-libgl --noconfirm
-systemctl enable vboxservice --now
+pacman -S virtualbox-guest-utils xf86-video-vmware mesa mesa-libgl --noconfirm --needed
+sudo systemctl enable vboxservice --now
 ```
 
 ---
@@ -275,40 +244,35 @@ systemctl enable vboxservice --now
 - **GNOME**
 
 ```bash
-pacman -S gnome gdm --noconfirm
+sudo pacman -S gnome gdm --noconfirm
 
-#Downloading important tools for gnome
-pacman -S gnome-terminal nautilus gnome-control-center gnome-tweaks \
-gnome-backgrounds
-
-adwaita-icon-theme --noconfirm
+# base gnome packages
+sudo pacman -S gnome-terminal nautilus gnome-control-center gnome-tweaks gnome-backgrounds --noconfirm --needed
 
 #Enabling login manager
-pacman -S gdm --noconfirm
-systemctl enable gdm --now
+sudo pacman -S gdm --noconfirm && systemctl enable gdm --now
 ```
 
 - **i3**
 
 ```bash
-pacman -S i3 ly --noconfirm --needed
-systemctl enable ly.service --now
+sudo pacman -S i3 ly --noconfirm --needed && systemctl enable ly.service --now
 ```
 
 - **Deepin**
 
 ```bash
-pacman -S deepin deepin-extra light-deepin-greeter --noconfirm
-pacman -S lightdm lightdm-gtk-greeter --noconfirm
-systemctl enable lightdm.service --now
+sudo pacman -S deepin deepin-extra light-deepin-greeter --noconfirm --needed
+sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
+sudo systemctl enable lightdm.service --now
 ```
 
 - **XFCE**
 
 ```bash
-pacman -S xfce4 xfce4-goodies xfce4-terminal --noconfirm
-pacman -S lightdm lightdm-gtk-greeter --noconfirm
-systemctl enable lightdm --now
+sudo pacman -S xfce4 xfce4-goodies xfce4-terminal --noconfirm --needed
+sudo pacman -S lightdm lightdm-gtk-greeter --noconfirm --needed
+sudo systemctl enable lightdm --now
 ```
 
 - **KDE Plasma**
@@ -316,18 +280,13 @@ systemctl enable lightdm --now
 ```bash
 sudo pacman -S plasma-meta kde-applications --noconfirm --needed
 
-#Enabling display manager
-sudo pacman -S sddm
+# enabling display manager
+sudo pacman -S sddm --noconfirm --needed
 sudo systemctl enable sddm --now
 
-#Useful KDE apps
-sudo pacman -S konsole dolphin kate breeze-gtk breeze-kde4 kde-gtk-config
-sudo pacman -S ark kinfocenter kwalletmanager gwenview kipi-plugins digikam \
-spectacle okular spreedcrunch redshift kfind ktorrent
-
-sudo nano /etc/sddm.conf
-[ Theme ] 
-Current=breeze
+# useful KDE apps
+sudo pacman -S konsole dolphin kate breeze-gtk breeze-kde4 kde-gtk-config ark kinfocenter kwalletmanager gwenview kipi-plugins digikam \
+spectacle okular spreedcrunch redshift kfind ktorrent --noconfirm --needed
 
 #Installing KDE plasma addons
 sudo pacman -S kdeplasma-addons
