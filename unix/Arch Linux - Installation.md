@@ -26,10 +26,6 @@ iwctl station wlan0 scan
 iwctl station wlan0 get-networks
 iwctl station wlan0 connect <SSID>
 
-# Alguns comandos para referência
-_iwctl --passphrase="password" station wlan0 connect "SSID"_
-_iwctl station wlan0 disconnect_
-
 # enabling ethernet 
 dhclient
 
