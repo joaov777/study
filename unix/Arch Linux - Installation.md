@@ -91,7 +91,6 @@ w
 ```bash
 # BIOS Legacy
 mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sda2
 --------
 # UEFI
 mkfs.fat -F32 /dev/sda1
@@ -102,7 +101,7 @@ mkfs.ext4 /dev/sda2
 
 ```bash
 # BIOS Legacy
-mount /dev/sda2 /mnt
+mount /dev/sda1 /mnt
 --------
 # UEFI
 mount /dev/sda2 /mnt
