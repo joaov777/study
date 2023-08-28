@@ -18,6 +18,7 @@ sudo systemctl enable sshd.service --now && passwd
 - **Initial configuration**
 
 ```bash
+# for brazillian abnt2 keyboard layout
 loadkeys br-abnt2
 
 #enabling wireless/wifi connectivity (make sure you check your wlan device name)
@@ -40,6 +41,8 @@ timedatectl set-ntp true
 # check current partition and drive status
 fdisk -l
 lsblk
+lsblk --fs
+lsblk --fs --ascii
 
 # start partitioning
 fdisk /dev/sdX
