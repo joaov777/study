@@ -109,16 +109,16 @@ mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
 
-- **Downloading Arch Linux core**
-
-```bash
-pacstrap -i /mnt base 
-```
-
 - **Configuring disks through fstab**
 
 ```bash
 genfstab -U -p /mnt >> /mnt/etc/fstab
+```
+
+- **Downloading Arch Linux core**
+
+```bash
+pacstrap -i /mnt base 
 ```
 
 - **Entering into the freshly installed system and updating root password**
