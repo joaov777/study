@@ -34,7 +34,7 @@ timedatectl set-ntp true
 
 ```
 
-- **Partitioning the system**
+- **Overall for partitioning**
 
 ```bash
 # check current partition and drive status
@@ -45,25 +45,52 @@ lsblk
 fdisk /dev/sdX
 
 # commands for fdisk
-p -- show current partition layout
-o -- new partition table
-n -- new partition
-t -- set partition type
-a -- activate the bootable flag on the partition
+# p -- show current partition layout
+# o -- new partition table for BIOS
+# g -- new partition table for UEFI
+# n -- new partition
+# t -- set partition type (L to list all)
+# a -- activate the bootable flag on the partition
 
-# for this installation
-/dev/sda1 --> /boot ==> 512M
-/dev/sda2 --> / ==> Left space
+```
+
+- **Partitioning process**
+
+```bash
+# BIOS Legacy
+fdisk /dev/sdX
+p
+o
+n + Enter + Enter + Enter (entire disk used by one single partition)
+t + (L to list all and choose ext4)
+a + Enter
+
+w
+--------
+# UEFI
+fdisk /dev/sdX
+p
+g
+
+-- EFI Partition (/dev/sdX1)
+n + Enter + Enter + +512M
+t + 1  + Enter
+
+-- System Partition (/dev/sdX2)
+n + Enter + Enter + Enter (entire disk space left will be used)
+t + (L to list all and choose ext4)
+
+w 
 ```
 
 - **Formatting partitions**
 
 ```bash
-#BIOS Legacy
+# BIOS Legacy
 mkfs.ext4 /dev/sda1
 mkfs.ext4 /dev/sda2
 --------
-#UEFI
+# UEFI
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
 ```
@@ -77,7 +104,6 @@ ls /mnt #(lost+found)
 --------
 #UEFI
 mount /dev/sda2 /mnt
-ls /mnt #(lost+found)
 mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 ```
