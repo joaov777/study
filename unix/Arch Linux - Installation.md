@@ -12,8 +12,7 @@ _If nothing shows up. Then your system supports BIOS. But if something is displa
 - **[Optional] Enabling SSH access for a remote computer installation:**
 
 ```bash
-sudo systemctl enable sshd.service --now
-passwd 
+sudo systemctl enable sshd.service --now && passwd 
 ```
 
 - **Initial configuration**
