@@ -308,22 +308,17 @@ systemctl enable lightdm.service --now
 ```bash
 pacman -S xfce4 xfce4-goodies xfce4-terminal --noconfirm
 pacman -S lightdm lightdm-gtk-greeter --noconfirm
-systemctl enable lightdm.service --now
+systemctl enable lightdm --now
 ```
 
 - **KDE Plasma**
 
 ```bash
-#maybe is necessary
-echo "exec startkde" > ~/.xinitrc
-
-#sudo pacman -S plasma-meta
-#sudo pacman -S plasma-desktop
-sudo pacman -S plasma
+sudo pacman -S plasma-meta kde-applications --noconfirm --needed
 
 #Enabling display manager
 sudo pacman -S sddm
-sudo systemctl enable ssdm.service --now
+sudo systemctl enable sddm --now
 
 #Useful KDE apps
 sudo pacman -S konsole dolphin kate breeze-gtk breeze-kde4 kde-gtk-config
