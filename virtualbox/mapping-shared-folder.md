@@ -24,3 +24,10 @@ mkdir $HOME/MyDocuments
 #sudo mount -t vboxsf foldername /mnt/shared
 sudo mount -t vboxsf MyDocumetns /home/joao/MyDocuments
 ```
+
+---
+##### In case you are using WSL on the host machine, mapping it is just as easy
+- Make sure the host folder path is located within: \\wsl$ and choose a folder
+- Local VM folder name (this is created inside the VM)
+- Auto-mount and Make Permanent
+- Enable the mapping with `sudo mount -t vboxsf foldername /home/joao/foldername`
