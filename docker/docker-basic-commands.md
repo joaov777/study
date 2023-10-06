@@ -32,6 +32,9 @@ docker container run --name postgres-db -e POSTGRES_PASSWORD=docker -p 5432:5432
 # creating a temporary container without password with user 'postgres'
 docker run -it --rm -p 5435:5432 -e POSTGRES_HOST_AUTH_METHOD=trust --name mydb postgres
 
+# creating a temporary container with password and random port number
+docker run -it --rm --name mypostgres -e POSTGRES_USER="postgres" -e POSTGRES_PASSWORD="haha" -p $(( $RANDOM % 9000 + 1000 )):5432 postgres:13-alpine
+
 # creating a temporary container with user and password set
 docker run -it --rm -p 5435:5432 -e POSTGRES_USER=mydbuser -e POSTGRES_PASSWORD=mydbiscool --name mydb postgres
 
